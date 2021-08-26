@@ -9,12 +9,12 @@ const getAllUser = async (req, res) => {
     res.status(200).json(
       user.map((user) => {
         return {
-          eName: user.UserName,
+          Name: user.userName,
           age: user.age,
-          tooStack: user.toolStack,
+          toolStack: user.toolStack,
           request: {
             type: "GET",
-            url: `http://localhost:5000/employees/${user.userName}`,
+            url: `http://localhost:5000/user/${user.userName}`,
           },
         };
       })
@@ -62,9 +62,9 @@ const addNewUser = async (req, res) => {
 const getUser = async (req, res, next) => {
   let user;
   try {
-    employee = await UserData.findOne({ name: req.params.userName });
+    user = await UserData.findOne({ name: req.params.userName });
     console.log(user);
-    if (user.length == null) {
+    if (user == null) {
       // Not found
       return res
         .status(404)
