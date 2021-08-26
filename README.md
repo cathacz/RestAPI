@@ -27,13 +27,13 @@ If any of the middleware fails, you should send a response with an error message
 
 ###### EXAMPLE RESPONSES
 
-// Success case
+// Success case  
 `{ "message" : "This user is valid!" }`
 
-// Failure
+// Failure  
 `{ "message": "We can not validate your user. They are not a member of FBW48" }`
 
-// Other case of Failure
+// Other case of Failure  
 `{ "message": "We can not validate your user. we don't accept pp that are below 18 years of age" }`
 
 ### For the `/display/:name` endpoint:
