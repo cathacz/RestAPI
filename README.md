@@ -7,9 +7,9 @@ Create a Express server that handles:
 - A `GET` request endpoint at `/` as a landing page for your API. ✔️
 - A `GET` request endpoint at `/user` to display all users in DB. ✔️
 - A `POST` request endpoint at `/user` to add new user to DB. ✔️
-- A `PUT` request endpoint at `/user/:name` to update user from DB upon their name.
-- A `PATCH` request endpoint at `/user/:name` to update some user data from DB upon their name.
-- A `GET` request endpoint at `/display/:name` to display one user from DB upon their name.
+- A `PUT` request endpoint at `/user/:name` to update user from DB upon their name. ✔️
+- A `PATCH` request endpoint at `/user/:name` to update some user data from DB upon their name. ✔️
+- A `GET` request endpoint at `/display/:name` to display one user from DB upon their name. ✔️
 
 New user endpoint should be able to accept a JSON object like the following:
 

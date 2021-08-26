@@ -44,12 +44,12 @@ const addNewUser = async (req, res) => {
 
   // EXAMPLE:
   //   {
-  //     "userName": "Catha",
-  //     "userPass": "123pass",
-  //     "age": 32,
-  //     "fbw": 48,
-  //     "toolStack": ["Js", "Html5", "Css3", "Sass"],
-  //     "eMail": "contact@cath.at"
+  //   "userName": "Catha",
+  //   "userPass": "123pass",
+  //   "age": 32,
+  //   "fbw": 48,
+  //   "toolStack": ["Js", "Html5", "Css3", "Sass"],
+  //   "eMail": "contact@cath.at"
   //   }
   try {
     const newUser = await user.save();
@@ -65,9 +65,10 @@ const addNewUser = async (req, res) => {
 
 // Middleware – get User by name NOT WORKING SO FAR –> always shows first User
 const getUser = async (req, res, next) => {
+  console.log();
   let user;
   try {
-    user = await UserData.findOne({ name: req.params.userName });
+    user = await UserData.findOne({ userName: req.params.userName });
     console.log(user);
     if (user == null) {
       // Not found
