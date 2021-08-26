@@ -14,6 +14,8 @@ const getAllUser = async (req, res) => {
       user.map((user) => {
         return {
           Name: user.userName,
+          Password: user.userPass,
+          FBW: user.fbw,
           age: user.age,
           toolStack: user.toolStack,
           request: {
@@ -61,7 +63,7 @@ const addNewUser = async (req, res) => {
   }
 };
 
-// Middleware – get User by name NOT WORKING SO FAR
+// Middleware – get User by name NOT WORKING SO FAR –> always shows first User
 const getUser = async (req, res, next) => {
   let user;
   try {

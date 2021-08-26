@@ -18,4 +18,8 @@ router
   .put(getUser, updateUser)
   .patch(getUser, updateUserPart);
 
+router.get("/display/:userName", getUser, (req, res) => {
+  res.status(200).json(res.user);
+});
+
 module.exports = router;
