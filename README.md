@@ -19,10 +19,12 @@ New user endpoint should be able to accept a JSON object like the following:
 - Create a middleware method that will make sure the object received contains userName, userPass, age, fbw and email.
 - Create a middleware method that will check if the user is above 18 years old
 - Create a middleware method that will check if the user belongs to our FBW
-  If all the above is true, then you should send a response with a success message
-  If any of the middleware fails, you should send a response with an error message that says why the user is not valid.
 
-#### EXAMPLE RESPONSES
+If all the above is true, then you should send a response with a success message
+
+If any of the middleware fails, you should send a response with an error message that says why the user is not valid.
+
+###### EXAMPLE RESPONSES
 
 // Success case
 `{ "message" : "This user is valid!" }`
@@ -39,7 +41,7 @@ New user endpoint should be able to accept a JSON object like the following:
 - Create a middleware that sorts the toolStack array alphabetically.
 - Create a middleware that will turn age and fbw to numbers.
 
-EXAMPLE RESPONSES
+###### EXAMPLE RESPONSES
 
 `{ "userName": "Steel", "userPass": "123pass", "age": 32, "fbw": 48, "toolStack": ["Css3", "Html5", "Js", "Sass"], "email": "contact@steel.eu" }`
 
