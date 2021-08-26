@@ -4,7 +4,7 @@ const userDataSchema = new mongoose.Schema({
     type: String,
     trim: true,
     required: [true, "Sorry, I didn't get your name"],
-    unique: true,
+    unique: [true, "Someone else already uses that name – choose a new name"],
   },
   userPass: {
     type: String,
@@ -23,7 +23,7 @@ const userDataSchema = new mongoose.Schema({
     type: String,
     trim: true,
     required: [true, "Don't you wanna be my penfriend?"],
-    unique: true,
+    unique: [true, "This eMail address has already been used"],
   },
   toolStack: {
     type: Array,

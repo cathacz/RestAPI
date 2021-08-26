@@ -13,11 +13,11 @@ const getAllUser = async (req, res) => {
     res.status(200).json(
       user.map((user) => {
         return {
-          Name: user.userName,
+          Name: user.userName.charAt(0).toUpperCase() + user.userName.slice(1),
           Password: user.userPass,
           FBW: user.fbw,
           age: user.age,
-          toolStack: user.toolStack,
+          toolStack: user.toolStack.sort(),
           request: {
             type: "GET",
             url: `http://localhost:5000/user/${user.userName}`,
@@ -42,6 +42,16 @@ const addNewUser = async (req, res) => {
     toolStack: req.body.toolStack,
   });
 
+  // ------------------- Checking if User is worthy ---------------------
+  // Checking if user is old enough
+  if (req.body.age <= 17) {
+    return res.status(400).json(`too young`);
+  }
+  // Checking if FBW = 48 (we a a closed circle)
+  if (req.body.fbw !== 48) {
+    return res.status(400).json(`nah – wrong class`);
+  }
+
   // EXAMPLE:
   //   {
   //   "userName": "Catha",
@@ -54,7 +64,7 @@ const addNewUser = async (req, res) => {
   try {
     const newUser = await user.save();
     // 201 for Successful Created
-    res.status(201).json(`I just added: ${newUser}`);
+    res.status(201).json(`Great Job! I just added: ${newUser} as an User`);
   } catch (err) {
     // 400 Bad request
     res.status(400).json({
@@ -129,20 +139,19 @@ const updateUserPart = async (req, res) => {
   }
 };
 
-// Middleware –  Remove one User with name (DELETE)
+// Middleware –  Remove one User with name (DELETE) – just for fun
 const deleteUser = async (req, res) => {
   try {
-    // remove
     await res.user.remove();
-    // 200 for Successful OK
     res.status(200).json({ message: "User has been removed" });
   } catch (err) {
-    // 400 for Internal server error
     res.status(500).json({
       message: err.message,
     });
   }
 };
+
+// ------------------- Feeding my OCD – sorting things  ---------------------
 
 module.exports = {
   getOneUser,
