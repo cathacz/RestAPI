@@ -12,14 +12,7 @@ A PATCH request endpoint at /user/:name to update some user data from DB upon th
 A GET request endpoint at /display/:name to display one user from DB upon their name.
 New user endpoint should be able to accept a JSON object like the following:
 
-'''{
-"userName": "steel",
-"userPass": "123pass",
-"age": 32,
-"fbw": 48,
-"toolStack": ["Js", "Html5", "Css3", "Sass"],
-"email": "contact@steel.eu"
-}'''
+`{ "userName": "steel", "userPass": "123pass", "age": 32, "fbw": 48, "toolStack": ["Js", "Html5", "Css3", "Sass"], "email": "contact@steel.eu" }`
 
 For the endpoint /user that adds new user
 Create a middleware method that will make sure the object received contains userName, userPass, age, fbw and email.
