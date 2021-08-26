@@ -63,7 +63,7 @@ const addNewUser = async (req, res) => {
   }
 };
 
-// Middleware – get User by name NOT WORKING SO FAR –> always shows first User
+// Middleware – get User by name ✔️
 const getUser = async (req, res, next) => {
   console.log();
   let user;
@@ -84,7 +84,7 @@ const getUser = async (req, res, next) => {
   next();
 };
 
-// Middleware – Update (whole) User by name (PUT)
+// Middleware – Update (whole) User by name (PUT) ✔️
 const updateUser = async (req, res) => {
   try {
     await UserData.updateOne(
@@ -107,7 +107,7 @@ const updateUser = async (req, res) => {
   }
 };
 
-// Middleware –  Update parts of an User by name (PATCH)
+// Middleware –  Update parts of an User by name (PATCH) ✔️
 const updateUserPart = async (req, res) => {
   const { userName, userPass, age, fbw, eMail, toolStack } = req.body;
   if (userName) {
@@ -129,6 +129,21 @@ const updateUserPart = async (req, res) => {
   }
 };
 
+// Middleware –  Remove one User with name (DELETE)
+const deleteUser = async (req, res) => {
+  try {
+    // remove
+    await res.user.remove();
+    // 200 for Successful OK
+    res.status(200).json({ message: "User has been removed" });
+  } catch (err) {
+    // 400 for Internal server error
+    res.status(500).json({
+      message: err.message,
+    });
+  }
+};
+
 module.exports = {
   getOneUser,
   getUser,
@@ -136,4 +151,5 @@ module.exports = {
   addNewUser,
   updateUser,
   updateUserPart,
+  deleteUser,
 };

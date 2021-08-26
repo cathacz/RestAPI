@@ -8,6 +8,7 @@ const {
   addNewUser,
   updateUser,
   updateUserPart,
+  deleteUser,
 } = require("../controllers/userController");
 
 router.route("/").get(getAllUser).post(addNewUser);
@@ -16,7 +17,8 @@ router
   .route("/:userName")
   .get(getUser, getOneUser)
   .put(getUser, updateUser)
-  .patch(getUser, updateUserPart);
+  .patch(getUser, updateUserPart)
+  .delete(getUser, deleteUser);
 
 router.get("/display/:userName", getUser, (req, res) => {
   res.status(200).json(res.user);
